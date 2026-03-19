@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.appliancerepairsilverspring.com/sitemap.xml
+Sitemap: https://www.aivantage.info/sitemap.xml

@@ -5,7 +5,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact | AiVantage</title>
+    <title>Contact AiVantage | Free AI Consultation</title>
+    <meta name="description" content="Contact AiVantage for a free, no obligation consultation about ChatGPT training, Copilot training, AI strategy, automations, and policy support." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="AiVantage" />
+    <meta name="theme-color" content="#23537c" />
+    <link rel="canonical" href="https://www.aivantage.info/contact.html" />
+    <link rel="icon" type="image/avif" href="./docs/assets/favicon.avif" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AiVantage" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content="Contact AiVantage | Free AI Consultation" />
+    <meta property="og:description" content="Get in touch with AiVantage for a free consultation on AI training, strategy, automations, and policy support." />
+    <meta property="og:url" content="https://www.aivantage.info/contact.html" />
+    <meta property="og:image" content="https://www.aivantage.info/docs/assets/logo.avif" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact AiVantage | Free AI Consultation" />
+    <meta name="twitter:description" content="Get in touch with AiVantage for a free consultation on AI training, strategy, automations, and policy support." />
+    <meta name="twitter:image" content="https://www.aivantage.info/docs/assets/logo.avif" />
     <link
         href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
@@ -14,6 +31,21 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="./docs/Style.css" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact AiVantage",
+            "url": "https://www.aivantage.info/contact.html",
+            "description": "Contact AiVantage for a free, no obligation consultation about AI training, strategy, and automations.",
+            "mainEntity": {
+                "@type": "Organization",
+                "name": "AiVantage",
+                "email": "contact@aivantage.info",
+                "url": "https://www.aivantage.info/"
+            }
+        }
+    </script>
 </head>
 
 <body class="bg-white text-slate-900" data-page="contact">
@@ -24,10 +56,10 @@
                     <img
                         src="./docs/assets/logo.avif"
                         alt="AiVantage logo"
-                        class="w-full max-w-[23rem] object-contain sm:max-w-[30rem] lg:max-w-[48rem]" />
+                        class="w-full max-w-[35rem] object-contain" />
                 </a>
 
-                <nav class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pb-4 text-[1.35rem] font-normal text-[#275883] sm:mt-8 sm:text-[1.55rem]">
+                <nav class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pb-4 font-normal text-[#275883] sm:mt-8 sm:text-[1.3rem]">
                     <a href="./index.html" class="transition hover:text-[#1b4466]">Home</a>
                     <a href="./services.html" class="transition hover:text-[#1b4466]">Services</a>
                     <a href="./about.html" class="transition hover:text-[#1b4466]">About</a>
@@ -38,31 +70,87 @@
     </header>
 
     <main>
-        <section class="bg-white pt-16 sm:pt-20 lg:pt-24">
+        <section class="bg-white py-16 sm:py-20 lg:py-24">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mx-auto flex max-w-[48rem] flex-col items-center text-center text-[#275883]">
-                    <h2 class="text-[2rem] font-light leading-[1.2] sm:text-[2.45rem] lg:text-[2.8rem]">
-                        Subscribe for relevant AI updates
-                    </h2>
+                <div class="mx-auto max-w-[74rem]">
+                    <h1 class="text-center text-[2.7rem] font-light leading-[1.1] text-[#275883] sm:text-[3.8rem] lg:text-[4.3rem]">
+                        Contact Us
+                    </h1>
 
-                    <form class="mt-8 flex w-full max-w-[40rem] items-stretch border border-[#5b6580]">
-                        <input
-                            type="email"
-                            placeholder="e.g., email@example.com"
-                            class="min-w-0 flex-1 px-7 py-5 text-[1rem] font-light italic text-[#275883] placeholder:text-[#275883] focus:outline-none" />
-                        <button
-                            type="submit"
-                            class="min-w-[5.7rem] bg-[#23537c] px-6 text-[1rem] font-light text-white transition hover:bg-[#1b4466]">
-                            Join
-                        </button>
+                    <form id="contact-form" class="mt-12 text-[#275883]">
+                        <div>
+                            <label for="name" class="block text-[1.05rem] font-normal leading-[1.4]">Name *</label>
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                placeholder="Enter your name"
+                                class="mt-2 h-[4rem] w-full border border-[#3d6d96] px-4 text-[1rem] font-normal text-[#275883] placeholder:text-[#275883] focus:outline-none" />
+                        </div>
+
+                        <div class="mt-4">
+                            <label for="email" class="block text-[1.05rem] font-normal leading-[1.4]">Email *</label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                placeholder="Enter your email"
+                                class="mt-2 h-[4rem] w-full border border-[#3d6d96] px-4 text-[1rem] font-normal text-[#275883] placeholder:text-[#275883] focus:outline-none" />
+                        </div>
+
+                        <div class="mt-4">
+                            <label for="subject" class="block text-[1.05rem] font-normal leading-[1.4]">Subject</label>
+                            <input
+                                id="subject"
+                                name="subject"
+                                type="text"
+                                placeholder="Type the subject"
+                                class="mt-2 h-[4rem] w-full border border-[#3d6d96] px-4 text-[1rem] font-normal text-[#275883] placeholder:text-[#275883] focus:outline-none" />
+                        </div>
+
+                        <div class="mt-4">
+                            <label for="message" class="block text-[1.05rem] font-normal leading-[1.4]">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                placeholder="Type your message here..."
+                                class="mt-2 h-[9.8rem] w-full resize-none border border-[#3d6d96] px-4 py-4 text-[1rem] font-normal text-[#275883] placeholder:text-[#275883] focus:outline-none"></textarea>
+                        </div>
+
+                        <div class="mt-5 flex justify-end">
+                            <button
+                                type="submit"
+                                class="inline-flex min-w-[11.2rem] items-center justify-center bg-[#23537c] px-8 py-4 text-[1.02rem] font-semibold text-white transition hover:bg-[#1b4466]">
+                                Submit
+                            </button>
+                        </div>
                     </form>
                 </div>
+            </div>
+        </section>
 
-                <div class="mx-auto mt-24 flex max-w-[42rem] flex-col items-center text-center">
+        <section class="bg-white">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="overflow-hidden border border-[#3d6d96]">
+                    <iframe
+                        src="https://www.google.com/maps?q=London,+United+Kingdom&z=10&output=embed"
+                        class="h-[26rem] w-full border-0 sm:h-[30rem] lg:h-[34rem]"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Location map"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white pt-16 sm:pt-20 lg:pt-24">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+
+                <div class="mx-auto flex max-w-[42rem] flex-col items-center text-center">
                     <img
                         src="./docs/assets/logo.avif"
                         alt="AiVantage logo"
-                        class="w-full max-w-[41rem] object-contain" />
+                        class="w-full max-w-[35rem] object-contain" />
 
                     <p class="mt-12 text-[1.2rem] font-light text-[#275883]">
                         contact@aivantage.info
