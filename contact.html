@@ -41,7 +41,6 @@
             "mainEntity": {
                 "@type": "Organization",
                 "name": "AiVantage",
-                "email": "contact@aivantage.info",
                 "url": "https://www.aivantage.info/"
             }
         }
@@ -77,7 +76,11 @@
                         Contact Us
                     </h1>
 
-                    <form id="contact-form" class="mt-12 text-[#275883]">
+                    <form id="contact-form" class="mt-12 text-[#275883]" action="https://formsubmit.co/elliotshimmin@outlook.com" method="POST">
+                        <input type="hidden" name="_subject" value="New AiVantage contact form submission" />
+                        <input type="hidden" name="_captcha" value="false" />
+                        <input type="hidden" name="_template" value="table" />
+                        <input type="hidden" name="_next" value="https://www.aivantage.info/contact.html?submitted=1" />
                         <div>
                             <label for="name" class="block text-[1.05rem] font-normal leading-[1.4]">Name *</label>
                             <input
@@ -151,10 +154,6 @@
                         src="./docs/assets/logo.avif"
                         alt="AiVantage logo"
                         class="w-full max-w-[35rem] object-contain" />
-
-                    <p class="mt-12 text-[1.2rem] font-light text-[#275883]">
-                        contact@aivantage.info
-                    </p>
 
                     <p class="mt-10 pb-10 text-[1.05rem] font-light text-[#275883] sm:pb-12">
                         ©2024 by AiVantage.
