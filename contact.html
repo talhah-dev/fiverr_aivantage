@@ -11,7 +11,7 @@
     <meta name="author" content="AiVantage" />
     <meta name="theme-color" content="#23537c" />
     <link rel="canonical" href="https://www.aivantage.info/contact.html" />
-    <link rel="icon" type="image/avif" href="./docs/assets/favicon.avif" />
+    <link rel="icon" type="image/avif" href="./docs/assets/favicon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AiVantage" />
     <meta property="og:locale" content="en_GB" />
@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Get in touch with AiVantage for a free consultation on AI training, strategy, automations, and policy support." />
     <meta name="twitter:image" content="https://www.aivantage.info/docs/assets/logo.avif" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -76,11 +76,10 @@
                         Contact Us
                     </h1>
 
-                    <form id="contact-form" class="mt-12 text-[#275883]" action="https://formsubmit.co/elliotshimmin@outlook.com" method="POST">
-                        <input type="hidden" name="_subject" value="New AiVantage contact form submission" />
-                        <input type="hidden" name="_captcha" value="false" />
-                        <input type="hidden" name="_template" value="table" />
-                        <input type="hidden" name="_next" value="https://www.aivantage.info/contact.html?submitted=1" />
+                    <form id="contact-form" class="mt-12 text-[#275883]" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="a569b98b-2503-47f1-ad8c-88fdf8b1c6d7" />
+                        <input type="hidden" name="subject" value="New AiVantage contact form submission" />
+                        <input type="hidden" name="from_name" value="AiVantage Website" />
                         <div>
                             <label for="name" class="block text-[1.05rem] font-normal leading-[1.4]">Name *</label>
                             <input
@@ -127,6 +126,7 @@
                                 Submit
                             </button>
                         </div>
+                        <p id="form-status" class="mt-4 hidden text-right text-[0.98rem] font-normal"></p>
                     </form>
                 </div>
             </div>
@@ -162,6 +162,58 @@
             </div>
         </section>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("contact-form");
+            const status = document.getElementById("form-status");
+
+            if (!form || !status) return;
+
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalText = submitButton ? submitButton.textContent : "Submit";
+
+                status.classList.add("hidden");
+
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.textContent = "Submitting...";
+                }
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: "POST",
+                        body: new FormData(form)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        form.reset();
+                        status.textContent = "Successfully submitted.";
+                        status.className = "mt-4 text-right text-[0.98rem] font-normal text-green-600";
+                    } else {
+                        status.textContent = "Submission failed. Please try again.";
+                        status.className = "mt-4 text-right text-[0.98rem] font-normal text-red-600";
+                    }
+                } catch (error) {
+                    status.textContent = "Submission failed. Please try again.";
+                    status.className = "mt-4 text-right text-[0.98rem] font-normal text-red-600";
+                } finally {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalText;
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
+
+
+

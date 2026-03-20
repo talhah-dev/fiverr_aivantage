@@ -1,4 +1,4 @@
-﻿* {
+* {
     box-sizing: border-box;
     outline: none;
 }
@@ -15,7 +15,7 @@ html {
 
 body {
     margin: 0;
-    font-family: "Raleway", sans-serif;
+    font-family: "Work Sans", sans-serif;
     color: #1e293b;
 }
 
@@ -794,4 +794,6 @@ body.is-loading {
         box-shadow: none;
     }
 }
+
+
 
