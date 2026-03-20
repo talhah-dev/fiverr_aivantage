@@ -478,14 +478,19 @@
                         Subscribe for relevant AI updates
                     </h2>
 
-                    <form class="mt-8 flex w-full max-w-[40rem] items-stretch border border-[#5b6580]">
-                        <input type="email" placeholder="e.g., email@example.com"
+                    <form id="subscribe-form" class="mt-8 flex w-full max-w-[40rem] items-stretch border border-[#5b6580]"
+                        action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="a569b98b-2503-47f1-ad8c-88fdf8b1c6d7" />
+                        <input type="hidden" name="subject" value="Subscribe" />
+                        <input type="hidden" name="from_name" value="AiVantage Website" />
+                        <input type="email" name="email" required placeholder="e.g., email@example.com"
                             class="min-w-0 flex-1 px-7 py-5 text-[1rem] font-light italic text-[#275883] placeholder:text-[#275883] focus:outline-none" />
                         <button type="submit"
                             class="min-w-[5.7rem] bg-[#23537c] px-6 text-[1rem] font-light text-white transition hover:bg-[#1b4466]">
                             Join
                         </button>
                     </form>
+                    <p id="subscribe-status" class="mt-4 hidden text-center text-[0.98rem] font-normal"></p>
                 </div>
 
                 <div class="mx-auto mt-24 flex max-w-[42rem] flex-col items-center text-center">
@@ -504,7 +509,58 @@
     <script src="./docs/javascript/Navbar.js"></script>
     <script src="./docs/javascript/Footer.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("subscribe-form");
+            const status = document.getElementById("subscribe-status");
+
+            if (!form || !status) return;
+
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton ? submitButton.textContent : "";
+
+                status.textContent = "";
+                status.className = "mt-4 hidden text-center text-[0.98rem] font-normal";
+
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.textContent = "Submitting...";
+                }
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: "POST",
+                        body: new FormData(form),
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        form.reset();
+                        status.textContent = "Successfully submitted.";
+                        status.className = "mt-4 text-center text-[0.98rem] font-normal text-green-600";
+                    } else {
+                        status.textContent = "Submission failed. Please try again.";
+                        status.className = "mt-4 text-center text-[0.98rem] font-normal text-red-600";
+                    }
+                } catch (error) {
+                    status.textContent = "Submission failed. Please try again.";
+                    status.className = "mt-4 text-center text-[0.98rem] font-normal text-red-600";
+                } finally {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
+
+
 
