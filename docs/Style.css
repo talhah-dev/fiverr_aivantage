@@ -15,8 +15,23 @@ html {
 
 body {
     margin: 0;
-    font-family: "Work Sans", sans-serif;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
     color: #1e293b;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300 !important;
+}
+
+p {
+    font-weight: 200 !important;
 }
 
 .aiv-hero {
@@ -26,7 +41,6 @@ body {
 
 .aiv-hero__title,
 .aiv-hero__guarantee {
-    font-weight: 300;
     letter-spacing: -0.03em;
 }
 
@@ -795,5 +809,41 @@ body.is-loading {
     }
 }
 
+
+
+
+
+
+
+
+
+
+main {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 480ms ease, transform 480ms ease;
+    will-change: opacity, transform;
+}
+
+body.is-page-ready main {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.is-page-leaving main {
+    opacity: 0;
+    transform: translateY(12px);
+    transition-duration: 420ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    main,
+    body.is-page-ready main,
+    body.is-page-leaving main {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
 
 

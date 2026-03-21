@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const siteLoader = document.getElementById("siteLoader");
 
   if (siteLoader) {
@@ -93,6 +93,46 @@
     node.textContent = new Date().getFullYear();
   });
 
+
+  const revealPage = () => {
+    document.body.classList.remove("is-page-leaving");
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        document.body.classList.add("is-page-ready");
+      });
+    });
+  };
+
+  revealPage();
+
+  window.addEventListener("pageshow", () => {
+    revealPage();
+  });
+
+  document.querySelectorAll('a[href]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+
+      if (!href || href.startsWith("#") || link.hasAttribute("download")) return;
+      if (link.target && link.target !== "_self") return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      const destination = new URL(link.href, window.location.href);
+      const current = new URL(window.location.href);
+
+      if (destination.origin !== current.origin) return;
+      if (destination.pathname === current.pathname && destination.hash) return;
+
+      event.preventDefault();
+      document.body.classList.remove("is-page-ready");
+      document.body.classList.add("is-page-leaving");
+
+      window.setTimeout(() => {
+        window.location.href = destination.href;
+      }, 420);
+    });
+  });
   document.querySelectorAll(".faq-item").forEach((item) => {
     const summary = item.querySelector("summary");
     const panel = item.querySelector(".faq-panel");
@@ -152,3 +192,5 @@
     });
   }
 });
+
+
